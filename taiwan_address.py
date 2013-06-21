@@ -80,18 +80,18 @@ class Address:
                     thread_amounts += 1
 
     def __write_address(self):
-        with codecs.open('csv/taiwan_address.txt', 'a') as f:
+        with codecs.open('taiwan_address.csv', 'a') as f:
             f.write('counter,city,cityarea,address\n')
         for thread in self.thread_pool:
             for result in thread.results:
                 result = (self.counter, result['city'],
                           result['city_area'], result['address'])
-                with codecs.open('csv/taiwan_address.txt', 'a') as f:
+                with codecs.open('taiwan_address.csv', 'a') as f:
                     f.write('{0},{1},{2},{3}\n'.format(*result))
                 self.counter += 1
 
     def __remove_file(self):
-        commands.getstatusoutput('rm csv/taiwan_address.txt')
+        commands.getstatusoutput('rm taiwan_address.csv')
 
     def save_address(self):
         self.__get_city()
