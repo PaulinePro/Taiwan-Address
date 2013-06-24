@@ -6,6 +6,7 @@ import re
 import codecs
 import threading
 import commands
+import sqlite3
 
 
 # Request headers
@@ -78,8 +79,11 @@ class Address:
                     self.thread_pool[thread_counter].start()
                     thread_counter += 1
                     thread_amounts += 1
+        for thread in self.thread_pool:
+            thread.join()
 
     def __write_address(self):
+        commands.getstatusoutput('rm taiwan_address.csv')
         with codecs.open('taiwan_address.csv', 'a') as f:
             f.write('counter,city,cityarea,address\n')
         for thread in self.thread_pool:
@@ -90,15 +94,27 @@ class Address:
                     f.write('{0},{1},{2},{3}\n'.format(*result))
                 self.counter += 1
 
-    def __remove_file(self):
-        commands.getstatusoutput('rm taiwan_address.csv')
+    def __insert_database(self):
+        commands.getstatusoutput('rm taiwan_address.db')
+        conn = sqlite3.connect('taiwan_address.db')
+        conn.text_factory = str
+        cursor = conn.cursor()
+        cursor.execute('CREATE TABLE address (_id INTEGER PRIMARY KEY AUTOINCREMENT, city TEXT, cityarea TEXT, address TEXT)')
+        for thread in self.thread_pool:
+            for result in thread.results:
+                row = (self.counter,result['city'],
+                       result['city_area'], result['address'], )
+                self.counter += 1
+                cursor.execute('INSERT INTO address VALUES (?,?,?,?)', row)
+        conn.commit()
+        conn.close()
 
     def save_address(self):
         self.__get_city()
         self.__get_cityarea()
         self.__get_address()
-        self.__remove_file()
         self.__write_address()
+        self.__insert_database()
 
 
 class AddressThread(threading.Thread):
