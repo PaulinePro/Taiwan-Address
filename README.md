@@ -9,16 +9,23 @@
     a = Address()
     
     cityareas = a.cityarea(u'臺北市')
-    print cityareas
-    a.address(u'臺北市', u'中正區')
+    for cityarea in cityareas:
+        print cityarea
+    # 中山區, 松山區, 士林區, 大同區...
+    
+    addresses = a.address(u'臺北市', u'中正區')
+    for address in addresses:
+        print address
+    # 寶慶路, 羅斯福路１段, 羅斯福路２段, 羅斯福路３段, 羅斯福路４段...
 </code>
 
 ### Requirements ###
-* Python 2.7 - <http://python.org>
+* Requests
+* BeautifulSoup4
 
     
 ## Data source
-* 中華郵政全球資訊網(3+2郵遞區號查詢) - http://www.post.gov.tw/post/internet/f_searchzone/index.jsp
+* 中華郵政全球資訊網(3+2郵遞區號查詢) - http://www.post.gov.tw/post/internet/Postal/index.jsp?ID=207
 
 ## To-Do
 * Everything is working fine now.
