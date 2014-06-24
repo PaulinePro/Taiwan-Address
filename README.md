@@ -32,5 +32,5 @@ Fork this repo and play around with it, don't forget to make pull request!
 ### To-Do ###
 * Everything is working fine now.
 
-## Lincense: ###
+### Lincense: ###
 * Just do what the f*** you want!
