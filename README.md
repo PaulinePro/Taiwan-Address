@@ -1,7 +1,10 @@
-# 台灣地址
+# Taiwan Address
 
-這個 Parser tool 是因為之前寫了些 APP 需要用到全台灣的地址，但是找了很久卻沒有相關的資料庫，於是，我在中華郵政網站的「3+2 郵遞區號查詢」找到全台灣的縣市,區以及地址。<br />
-希望這個工具可以幫助到更多需要用到全台灣地址的人。
+This parser tool can tell you every address in every city and cityarea.<br />
+I also put the results in JSON and SQLite format, so you can grab it directly.<br />
+Hope both the codes and result datas can help you.<br /><br />
+Fork this repo and play around with it, don't forget to make pull request!
+
 
 ### Usage: ###
 <code>
@@ -23,9 +26,11 @@
 * Requests
 * BeautifulSoup4
 
-    
-## Data source
-* 中華郵政全球資訊網(3+2郵遞區號查詢) - http://www.post.gov.tw/post/internet/Postal/index.jsp?ID=207
+### Data source ###
+* 中華郵政全球資訊網(中文地址英譯) - http://www.post.gov.tw/post/internet/Postal/index.jsp?ID=207
 
-## To-Do
+### To-Do ###
 * Everything is working fine now.
+
+## Lincense: ###
+* Just do what the f*** you want!
