@@ -7,8 +7,9 @@ Fork this repo and play around with it, don't forget to make pull request!
 
 
 ### Usage: ###
-<code>
+<pre><code>
     from address import Address
+    
     a = Address()
     
     cityareas = a.cityarea(u'臺北市')
@@ -20,7 +21,7 @@ Fork this repo and play around with it, don't forget to make pull request!
     for address in addresses:
         print address
     # 寶慶路, 羅斯福路１段, 羅斯福路２段, 羅斯福路３段, 羅斯福路４段...
-</code>
+</code></pre>
 
 ### Requirements ###
 * Requests
